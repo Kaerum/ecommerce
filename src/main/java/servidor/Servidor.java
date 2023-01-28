@@ -22,8 +22,9 @@ public class Servidor {
             return RespostaServidor.erro("Usuário %s já existe, por favor usar outro nome", usuario);
         }
         switch (tipo) {
-            case TipoUsuario.Cliente -> {},
-            case TipoUsuario.Administrador -> {}
+            case Cliente -> {}
+            case Administrador -> {}
         }
+        return null;
     }
 }
