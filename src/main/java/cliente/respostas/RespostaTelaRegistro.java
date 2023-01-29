@@ -1,5 +1,5 @@
 package cliente.respostas;
 
-import servidor.usuarios.TipoUsuario;
+import interfaces.usuario.TipoUsuario;
 
 public record RespostaTelaRegistro(TipoUsuario tipoUsuario, String usuario) {}

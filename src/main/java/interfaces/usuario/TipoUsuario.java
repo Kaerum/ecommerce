@@ -1,4 +1,4 @@
-package servidor.usuarios;
+package interfaces.usuario;
 
 public enum TipoUsuario {
     Cliente,

@@ -1,4 +1,4 @@
-package servidor.dados;
+package servidor.banco;
 
 import java.util.UUID;
 
