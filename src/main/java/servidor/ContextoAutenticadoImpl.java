@@ -3,6 +3,7 @@ package servidor;
 import interfaces.ContextoAutenticado;
 import interfaces.RespostaServidor;
 import interfaces.usuario.ColecaoAutenticada;
+import interfaces.usuario.TipoUsuario;
 import servidor.banco.colecao.Colecao;
 import servidor.banco.sessao.Permissao;
 import servidor.banco.sessao.Sessao;
@@ -22,6 +23,11 @@ public class ContextoAutenticadoImpl implements ContextoAutenticado {
 
     @Override
     public Set<Permissao> permissoesPara(Class<?> classe) {
+        return null;
+    }
+
+    @Override
+    public TipoUsuario tipoUsuario() {
         return null;
     }
 }

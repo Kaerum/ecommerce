@@ -7,7 +7,6 @@ import interfaces.usuario.TipoUsuario;
 import servidor.banco.Banco;
 import servidor.banco.BancoException;
 
-import java.util.Optional;
 import java.util.UUID;
 
 public class ServidorImpl implements Servidor {
@@ -25,7 +24,7 @@ public class ServidorImpl implements Servidor {
     }
 
     @Override
-    public RespostaServidor<String> registrar(String usuario, TipoUsuario tipo) {
+    public RespostaServidor<UUID> registrar(String usuario, TipoUsuario tipo) {
         return null;
     }
 
