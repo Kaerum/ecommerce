@@ -40,7 +40,6 @@ public class SimpleCardLayoutDemo {
 
         comboPanel.add(cardCombo);
         cardCombo.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent e) {
                 String item = cardCombo.getSelectedItem().toString();
 
@@ -54,8 +53,6 @@ public class SimpleCardLayoutDemo {
     public JPanel getCardContainerPanel() {
         return cardContainer;
     }
-
-
     public Component getComboPanel() {
         return comboPanel ;
     }
