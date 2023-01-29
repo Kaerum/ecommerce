@@ -1,6 +1,5 @@
 package servidor.banco;
 
-import interfaces.RespostaServidor;
 import interfaces.usuario.TipoUsuario;
 import servidor.banco.colecao.Colecao;
 import servidor.banco.sessao.Sessao;
@@ -15,21 +14,22 @@ public class Banco {
     private HashMap<Class<?>, Colecao<?>> colecoes = new HashMap<>();
     private HashMap<UUID, Sessao> sessoes = new HashMap<>();
 
-    private Sessao sessaoPara(UUID id) {
+    private Sessao sessaoPara(UUID id, TipoUsuario tipo) {
         var sessao = sessoes.get(id);
-        if (sessao != null) {
-            return sessao;
+        if (sessao == null) {
+            sessao = new Sessao(tipo);
+            sessoes.put(id, sessao);
         }
-        return null;
+        return sessao;
     }
 
-    public Sessao logar(String usuario) throws BancoException {
-        var usuarios = colecaoDeUsuarios.listar((entry) -> entry.getValue().nome() == usuario, null, Optional.of(1));
-        var id = Optional.ofNullable(usuarios.get(0)).map(u -> u.getId());
-        if (id.isEmpty()) {
-            throw new BancoException("Usuário %s não está cadastrado.", usuario);
+    public Sessao logar(String nome) throws BancoException {
+        var usuarios = colecaoDeUsuarios.listar((entry) -> entry.getValue().nome() == nome, null, Optional.of(1));
+        var usuario = Optional.ofNullable(usuarios.get(0));
+        if (usuario.isEmpty()) {
+            throw new BancoException("Usuário %s não está cadastrado.", nome);
         }
-        return sessaoPara(id.get());
+        return sessaoPara(usuario.get().getId(), usuario.get().getObjeto().tipo());
     }
 
     public UUID registrar(String nome, TipoUsuario tipo) throws BancoException {
@@ -38,5 +38,19 @@ public class Banco {
             throw new BancoException("Usuário %s já existe, por favor usar outro nome", nome);
         }
         return colecaoDeUsuarios.inserir(new Usuario(nome, tipo));
+    }
+
+    public <T> Colecao<T> colecao(Class<T> classe) {
+        var colecao = colecoes.get(classe);
+        if (colecao == null) {
+            colecao = new Colecao<>();
+            colecoes.put(classe, colecao);
+        }
+        /** SAFE: Esse é o único lugar que altera o conteúdo de colecoes, portanto
+         * conseguimos garantir que a Colecao para a chave Class<T> vai ser Colecao<T>
+         * em vez de Colecao<Not T>
+        */
+        //noinspection unchecked
+        return (Colecao<T>) colecao;
     }
 }

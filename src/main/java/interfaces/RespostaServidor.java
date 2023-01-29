@@ -1,5 +1,8 @@
 package interfaces;
 
+import servidor.banco.colecao.Colecao;
+import servidor.banco.sessao.Permissao;
+
 import java.util.Optional;
 
 public record RespostaServidor<T> (TipoRespostaServidor tipo, Optional<T> valor, Optional<String> mensagemDeErro) {
@@ -24,6 +27,14 @@ public record RespostaServidor<T> (TipoRespostaServidor tipo, Optional<T> valor,
                 TipoRespostaServidor.Sucesso,
                 Optional.ofNullable(valor),
                 Optional.empty()
+        );
+    }
+
+    public static String faltaPermissaoColecao(Permissao permissao, String colecao) {
+        return String.format(
+                "Usuário não tem a permissão %s para a coleção %s",
+                permissao.toString(),
+                colecao
         );
     }
 }

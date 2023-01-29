@@ -8,7 +8,7 @@ import java.util.Set;
 
 public interface ContextoAutenticado {
     public <T> RespostaServidor<ColecaoAutenticada<T>> colecao(Class<T> classe);
-    public Set<Permissao> permissoesPara(Class<?> classe);
+    public RespostaServidor<Set<Permissao>> permissoesPara(Class<?> classe);
 
-    public TipoUsuario tipoUsuario();
+    public RespostaServidor<TipoUsuario> tipoUsuario();
 }

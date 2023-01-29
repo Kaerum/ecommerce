@@ -44,10 +44,12 @@ public class Colecao<T> {
         return id;
     }
 
-    public void atualizar(UUID id, Function<T, Void> metodoAtualizador) {
+    public boolean atualizar(UUID id, Function<T, Void> metodoAtualizador) {
         var objeto = mapa.get(id);
         if (objeto != null) {
             metodoAtualizador.apply(objeto);
+            return true;
         }
+        return false;
     }
 }

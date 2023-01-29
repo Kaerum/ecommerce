@@ -22,6 +22,6 @@ public interface ColecaoAutenticada<T> {
 
     public RespostaServidor<UUID> inserir(T objeto);
 
-    public RespostaServidor<Void> atualizar(UUID id, Function<T, Void> metodoAtualizador);
+    public RespostaServidor<Boolean> atualizar(UUID id, Function<T, Void> metodoAtualizador);
 
 }

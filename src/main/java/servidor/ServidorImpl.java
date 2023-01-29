@@ -17,34 +17,18 @@ public class ServidorImpl implements Servidor {
     public RespostaServidor<ContextoAutenticado> logar(String usuario) {
         try {
             var sessao = banco.logar(usuario);
-            return RespostaServidor.sucesso(new ContextoAutenticadoImpl(sessao));
+            return RespostaServidor.sucesso(new ContextoAutenticadoImpl(sessao,banco));
         } catch (BancoException exception) {
             return RespostaServidor.erro(exception.getMessage());
         }
     }
 
     @Override
-    public RespostaServidor<UUID> registrar(String usuario, TipoUsuario tipo) {
-        return null;
+    public RespostaServidor<UUID> registrar(String nome, TipoUsuario tipo) {
+        try {
+            return RespostaServidor.sucesso(banco.registrar(nome, tipo));
+        } catch (BancoException exception) {
+            return RespostaServidor.erro(exception.getMessage());
+        }
     }
-
-//    public RespostaServidor<UUID> logar(String usuario) {
-//        try {
-//
-//        } catch (BancoException exception) {
-//            return RespostaServidor.erro()
-//        }
-//    }
-//
-//    public RespostaServidor<String> registrar(String usuario, TipoUsuario tipo) {
-//        var usuarios = gerenciadorDeUsuarios.listar(entry -> entry.getValue().getNome() == usuario, null, Optional.of(1));
-//        if (usuarios.size() > 0) {
-//            return RespostaServidor.erro("Usuário %s já existe, por favor usar outro nome", usuario);
-//        }
-//        switch (tipo) {
-//            case Cliente -> {}
-//            case Administrador -> {}
-//        }
-//        return null;
-//    }
 }
