@@ -1,10 +1,11 @@
-package produto;
+package servidor.produto;
 
 import lombok.Getter;
 import lombok.Setter;
 import java.util.UUID;
 
-public class Produto {
+
+public class Produto<T extends Enum<?>, S extends Enum<?>> {
     @Getter @Setter
     private String nome;
     @Getter @Setter
@@ -12,9 +13,9 @@ public class Produto {
     @Getter @Setter
     private String marca;
     @Getter @Setter
-    protected Enum categoria;
+    protected T categoria;
     @Getter @Setter
-    protected Enum subCategoria;
+    protected S subCategoria;
     @Getter
     private UUID uuid = null;
     public Produto() {
