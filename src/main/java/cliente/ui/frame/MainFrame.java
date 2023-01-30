@@ -1,8 +1,6 @@
 package cliente.ui.frame;
 
-import interfaces.ContextoAutenticado;
-import interfaces.RespostaServidor;
-import interfaces.usuario.TipoUsuario;
+import compartilhado.usuario.TipoUsuario;
 import servidor.ServidorImpl;
 
 import javax.swing.*;
@@ -13,7 +11,6 @@ import java.awt.event.WindowEvent;
 
 public class MainFrame {
     ServidorImpl servidor = new ServidorImpl();
-
     private final JFrame frame = new JFrame();
     private final JPanel logInPanel = new JPanel();
     private final JPanel signInPanel = new JPanel();

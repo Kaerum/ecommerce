@@ -1,7 +1,7 @@
 package servidor;
 
-import interfaces.RespostaServidor;
-import interfaces.usuario.ColecaoAutenticada;
+import compartilhado.RespostaServidor;
+import compartilhado.usuario.ColecaoAutenticada;
 import servidor.banco.Identificado;
 import servidor.banco.colecao.Colecao;
 import servidor.banco.colecao.OpcoesListagem;

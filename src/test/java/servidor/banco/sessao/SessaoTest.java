@@ -1,8 +1,9 @@
 package servidor.banco.sessao;
 
-import interfaces.usuario.TipoUsuario;
+import compartilhado.usuario.TipoUsuario;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import servidor.banco.usuarios.Usuario;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,9 +15,11 @@ public class SessaoTest {
 
     @Test
     public void sessaoTest_fromTipoUsuario_Sucesso() {
-        Sessao sessao = Sessao.fromTipoUsuario(TipoUsuario.Administrador);
+        Usuario administrador = new Usuario("Adm", TipoUsuario.Administrador);
+        Sessao sessao = Sessao.fromUsuario(administrador);
         Assertions.assertEquals(sessao.getTipoUsuario(), TipoUsuario.Administrador);
-        Sessao sessaoCliente = Sessao.fromTipoUsuario(TipoUsuario.Cliente);
+        Usuario cliente = new Usuario("Cln", TipoUsuario.Cliente);
+        Sessao sessaoCliente = Sessao.fromUsuario(cliente);
         Assertions.assertEquals(sessaoCliente.getTipoUsuario(), TipoUsuario.Cliente);
     }
 

@@ -1,12 +1,13 @@
 package servidor;
 
-import interfaces.ContextoAutenticado;
-import interfaces.RespostaServidor;
-import interfaces.usuario.ColecaoAutenticada;
-import interfaces.usuario.TipoUsuario;
+import compartilhado.ContextoAutenticado;
+import compartilhado.RespostaServidor;
+import compartilhado.usuario.ColecaoAutenticada;
+import compartilhado.usuario.TipoUsuario;
 import servidor.banco.Banco;
 import servidor.banco.sessao.Permissao;
 import servidor.banco.sessao.Sessao;
+import servidor.banco.usuarios.Usuario;
 
 import java.util.Set;
 
@@ -19,7 +20,7 @@ public class ContextoAutenticadoImpl implements ContextoAutenticado {
     }
     @Override
     public <T> RespostaServidor<ColecaoAutenticada<T>> colecao(Class<T> classe) {
-        return  RespostaServidor.sucesso(new ColecaoAutenticadaImpl<>(banco.colecao(classe), sessao.getPermissoesPara(classe)));
+        return RespostaServidor.sucesso(new ColecaoAutenticadaImpl<>(banco.colecao(classe), sessao.getPermissoesPara(classe)));
     }
 
     @Override
@@ -30,5 +31,10 @@ public class ContextoAutenticadoImpl implements ContextoAutenticado {
     @Override
     public RespostaServidor<TipoUsuario> tipoUsuario() {
         return RespostaServidor.sucesso(sessao.getTipoUsuario());
+    }
+
+    @Override
+    public String getNomeUsuario() {
+        return sessao.getNome();
     }
 }

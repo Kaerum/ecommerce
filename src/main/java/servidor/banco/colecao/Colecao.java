@@ -38,7 +38,10 @@ public class Colecao<T> {
                         .limite(OptionalInt.of(1))
                         .build()
         );
-        return Optional.ofNullable(usuarios.get(0));
+        if (usuarios.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(usuarios.get(0));
     }
     public boolean remover(UUID id) {
         return mapa.remove(id) != null;
