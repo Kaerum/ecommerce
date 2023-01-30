@@ -4,10 +4,11 @@ import interfaces.RespostaServidor;
 import interfaces.usuario.ColecaoAutenticada;
 import servidor.banco.Identificado;
 import servidor.banco.colecao.Colecao;
+import servidor.banco.colecao.OpcoesListagem;
 import servidor.banco.sessao.Permissao;
 
 import java.util.*;
-import java.util.function.Function;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class ColecaoAutenticadaImpl<T> implements ColecaoAutenticada<T> {
@@ -28,9 +29,9 @@ public class ColecaoAutenticadaImpl<T> implements ColecaoAutenticada<T> {
     }
 
     @Override
-    public RespostaServidor<List<Identificado<T>>> listar(Predicate<Map.Entry<UUID, T>> filtro, Comparator<Map.Entry<UUID, T>> sortear, Optional<Integer> limite) {
+    public RespostaServidor<List<Identificado<T>>> listar(Predicate<Map.Entry<UUID, T>> filtro, Comparator<Map.Entry<UUID, T>> sortear, OpcoesListagem opcoes) {
         Optional<RespostaServidor<List<Identificado<T>>>> naoPodeListar = checarPermissao(Permissao.Ler);
-        return naoPodeListar.orElseGet(() -> RespostaServidor.sucesso(colecao.listar(filtro, sortear, limite)));
+        return naoPodeListar.orElseGet(() -> RespostaServidor.sucesso(colecao.listar(filtro, sortear, opcoes)));
     }
 
     @Override
@@ -58,7 +59,7 @@ public class ColecaoAutenticadaImpl<T> implements ColecaoAutenticada<T> {
     }
 
     @Override
-    public RespostaServidor<Boolean> atualizar(UUID id, Function<T, Void> metodoAtualizador) {
+    public RespostaServidor<Boolean> atualizar(UUID id, Consumer<T> metodoAtualizador) {
         Optional<RespostaServidor<Boolean>> naoPodeAtualizar = checarPermissao(Permissao.Modificar);
         return naoPodeAtualizar.orElseGet(() -> RespostaServidor.sucesso(colecao.atualizar(id, metodoAtualizador)));
     }

@@ -6,7 +6,6 @@ import servidor.banco.sessao.Sessao;
 import servidor.banco.usuarios.Usuario;
 
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.UUID;
 
 public class Banco {
@@ -17,15 +16,14 @@ public class Banco {
     private Sessao sessaoPara(UUID id, TipoUsuario tipo) {
         var sessao = sessoes.get(id);
         if (sessao == null) {
-            sessao = new Sessao(tipo);
+            sessao = Sessao.fromTipoUsuario(tipo);
             sessoes.put(id, sessao);
         }
         return sessao;
     }
 
     public Sessao logar(String nome) throws BancoException {
-        var usuarios = colecaoDeUsuarios.listar((entry) -> entry.getValue().nome() == nome, null, Optional.of(1));
-        var usuario = Optional.ofNullable(usuarios.get(0));
+        var usuario = colecaoDeUsuarios.listarUm((entry) -> entry.getValue().nome() == nome);
         if (usuario.isEmpty()) {
             throw new BancoException("Usuário %s não está cadastrado.", nome);
         }
@@ -33,8 +31,10 @@ public class Banco {
     }
 
     public UUID registrar(String nome, TipoUsuario tipo) throws BancoException {
-        var usuarios = colecaoDeUsuarios.listar(entry -> entry.getValue().nome() == nome, null, Optional.of(1));
-        if (usuarios.size() > 0) {
+        var usuario = colecaoDeUsuarios.listarUm(
+                entry -> entry.getValue().nome() == nome
+        );
+        if (usuario.isPresent()) {
             throw new BancoException("Usuário %s já existe, por favor usar outro nome", nome);
         }
         return colecaoDeUsuarios.inserir(new Usuario(nome, tipo));
