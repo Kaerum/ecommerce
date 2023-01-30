@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a5e4be8-54af-428f-9b75-e4f252d2ae1a" name="Changes" comment="Merge remote-tracking branch 'origin/leo' into leo">
-      <change afterPath="$PROJECT_DIR$/src/main/test/produto/TestProduto.java" afterDir="false" />
+    <list default="true" id="59c04fc9-5692-409c-82b1-77d47ea78b6e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/produto/Informatica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/produto/Informatica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/produto/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/produto/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/produto/TesteInformatica.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cliente/prod/frame/IdentificadorDePainel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliente/ui/frame/IdentificadorDePainel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cliente/prod/frame/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliente/ui/frame/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -46,131 +44,76 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/leleo/Documents/AMERICANAS_POLOTECH/Ecommerce/ecommerce",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/leleo/Documents/AMERICANAS_POLOTECH/Ecommerce/ecommerce&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/test" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="produto" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.TestProduto.testProduto_Setter_Success">
-    <configuration name="TestProduto.testProduto_Getter_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager" selected="Application.cliente.ui.frame.MainFrame">
+    <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cliente.prod.frame.MainFrame" />
       <module name="ecommerce" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="produto.*" />
+          <option name="PATTERN" value="cliente.prod.frame.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="produto" />
-      <option name="MAIN_CLASS_NAME" value="produto.TestProduto" />
-      <option name="METHOD_NAME" value="testProduto_Getter_Success" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestProduto.testProduto_Setter_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="cliente.ui.frame.MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cliente.ui.frame.MainFrame" />
       <module name="ecommerce" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="produto.*" />
+          <option name="PATTERN" value="cliente.ui.frame.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="produto" />
-      <option name="MAIN_CLASS_NAME" value="produto.TestProduto" />
-      <option name="METHOD_NAME" value="testProduto_Setter_Success" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestProduto.testProduto_Setter_Success" />
-        <item itemvalue="JUnit.TestProduto.testProduto_Getter_Success" />
+        <item itemvalue="Application.cliente.ui.frame.MainFrame" />
+        <item itemvalue="Application.MainFrame" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0a5e4be8-54af-428f-9b75-e4f252d2ae1a" name="Changes" comment="" />
+      <changelist id="59c04fc9-5692-409c-82b1-77d47ea78b6e" name="Changes" comment="" />
       <created>1674866505022</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1674866505022</updated>
     </task>
-    <task id="LOCAL-00001" summary="ScopeOf: Produto.java">
-      <created>1674870329057</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1674870329057</updated>
-    </task>
-    <task id="LOCAL-00002" summary="ScopeOf: Produto.java">
-      <created>1674870632839</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1674870632839</updated>
-    </task>
-    <task id="LOCAL-00003" summary="ScopeOf: Produto.java">
-      <created>1674871438948</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1674871438948</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Merge remote-tracking branch 'origin/leo' into leo">
-      <created>1674871463959</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1674871463959</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/leo' into leo">
-      <created>1674944331987</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1674944331987</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'origin/leo' into leo">
-      <created>1674944360527</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1674944360527</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ScopeOf: Produto.java" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/leo' into leo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/leo' into leo" />
+    <option name="LAST_COMMIT_MESSAGE" value="ScopeOf: Produto.java" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cliente/ui/frame/MainFrame.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
