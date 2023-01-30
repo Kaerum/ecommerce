@@ -28,7 +28,10 @@ public class Colecao<T> {
 
     public Optional<Identificado<T>> listarUm(Predicate<Map.Entry<UUID, T>> filtro) {
         var usuarios = listar(filtro, null, Optional.of(1));
-        return Optional.ofNullable(usuarios.get(0));
+        if (usuarios.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(usuarios.get(0));
     }
     public boolean remover(UUID id) {
         return mapa.remove(id) != null;

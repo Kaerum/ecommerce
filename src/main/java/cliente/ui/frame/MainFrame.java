@@ -112,9 +112,9 @@ public class MainFrame {
     }
     private void logInAction() {
         String userInput = logInTextField.getText();
-//        RespostaServidor respostaServidor = servidor.logar(userInput);
-        if (false) {
-//        if(respostaServidor.valor().isPresent()) {
+        var respostaServidor = servidor.logar(userInput);
+//        if (false) {
+        if(respostaServidor.valor().isPresent()) {
             cardLayout.show(contentPane, IdentificadorDePainel.PRODUTOS.toString());
         } else {
             Object[] options = {"Cadastrar","Retornar ao Login"};
