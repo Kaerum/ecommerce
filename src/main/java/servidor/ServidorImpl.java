@@ -1,9 +1,9 @@
 package servidor;
 
-import interfaces.ContextoAutenticado;
-import interfaces.Servidor;
-import interfaces.RespostaServidor;
-import interfaces.usuario.TipoUsuario;
+import compartilhado.ContextoAutenticado;
+import compartilhado.Servidor;
+import compartilhado.RespostaServidor;
+import compartilhado.usuario.TipoUsuario;
 import servidor.banco.Banco;
 import servidor.banco.BancoException;
 

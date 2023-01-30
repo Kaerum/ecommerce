@@ -1,6 +1,6 @@
-package interfaces.usuario;
+package compartilhado.usuario;
 
-import interfaces.RespostaServidor;
+import compartilhado.RespostaServidor;
 import servidor.banco.Identificado;
 import servidor.banco.colecao.OpcoesListagem;
 
