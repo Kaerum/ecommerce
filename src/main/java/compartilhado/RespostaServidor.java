@@ -1,6 +1,5 @@
-package interfaces;
+package compartilhado;
 
-import servidor.banco.colecao.Colecao;
 import servidor.banco.sessao.Permissao;
 
 import java.util.Optional;

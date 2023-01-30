@@ -3,15 +3,16 @@ package servidor.banco.colecao;
 import servidor.banco.Identificado;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 public class Colecao<T> {
-    private HashMap<UUID, T> mapa = new HashMap<>();
+    private HashMap<UUID, T> mapa = new LinkedHashMap<>();
 
     public List<Identificado<T>> listar(
             Predicate<Map.Entry<UUID, T>> filtro,
             Comparator<Map.Entry<UUID, T>> sortear,
-            Optional<Integer> limite
+            OpcoesListagem opcoes
     ) {
         var lista = mapa.entrySet().stream();
         if (filtro != null) {
@@ -20,14 +21,23 @@ public class Colecao<T> {
         if (sortear != null) {
             lista = lista.sorted(sortear);
         }
-        if (limite.isPresent()) {
-            lista = lista.limit(limite.get());
+        if (opcoes.getPular().isPresent()) {
+            lista = lista.skip(opcoes.getPular().getAsInt());
+        }
+        if (opcoes.getLimite().isPresent()) {
+            lista = lista.limit(opcoes.getLimite().getAsInt());
         }
         return lista.map(entry -> new Identificado<T>(entry.getKey(), entry.getValue())).toList();
     }
 
     public Optional<Identificado<T>> listarUm(Predicate<Map.Entry<UUID, T>> filtro) {
-        var usuarios = listar(filtro, null, Optional.of(1));
+        var usuarios = listar(
+                filtro,
+                null,
+                OpcoesListagem.builder()
+                        .limite(OptionalInt.of(1))
+                        .build()
+        );
         if (usuarios.isEmpty()) {
             return Optional.empty();
         }
@@ -47,10 +57,10 @@ public class Colecao<T> {
         return id;
     }
 
-    public boolean atualizar(UUID id, Function<T, Void> metodoAtualizador) {
+    public boolean atualizar(UUID id, Consumer<T> metodoAtualizador) {
         var objeto = mapa.get(id);
         if (objeto != null) {
-            metodoAtualizador.apply(objeto);
+            metodoAtualizador.accept(objeto);
             return true;
         }
         return false;

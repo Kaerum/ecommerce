@@ -1,4 +1,4 @@
-package interfaces.usuario;
+package compartilhado.usuario;
 
 public enum TipoUsuario {
     Cliente,

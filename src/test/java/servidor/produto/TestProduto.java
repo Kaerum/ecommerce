@@ -1,9 +1,9 @@
-package produto;
+package servidor.produto;
+import compartilhado.produto.Informatica;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static produto.Informatica.Categoria.NOTEBOOK;
+import static compartilhado.produto.Informatica.Categoria.NOTEBOOK;
 
 public class TestProduto {
     @Test

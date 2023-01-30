@@ -1,12 +1,11 @@
 package servidor.banco;
 
-import interfaces.usuario.TipoUsuario;
+import compartilhado.usuario.TipoUsuario;
 import servidor.banco.colecao.Colecao;
 import servidor.banco.sessao.Sessao;
 import servidor.banco.usuarios.Usuario;
 
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.UUID;
 
 public class Banco {
@@ -14,27 +13,28 @@ public class Banco {
     private HashMap<Class<?>, Colecao<?>> colecoes = new HashMap<>();
     private HashMap<UUID, Sessao> sessoes = new HashMap<>();
 
-    private Sessao sessaoPara(UUID id, TipoUsuario tipo) {
-        var sessao = sessoes.get(id);
+    private Sessao sessaoPara(Identificado<Usuario> usuario) {
+        var sessao = sessoes.get(usuario.getId());
         if (sessao == null) {
-            sessao = new Sessao(tipo);
-            sessoes.put(id, sessao);
+            sessao = Sessao.fromUsuario(usuario.getObjeto());
+            sessoes.put(usuario.getId(), sessao);
         }
         return sessao;
     }
 
     public Sessao logar(String nome) throws BancoException {
-        var usuarios = colecaoDeUsuarios.listar((entry) -> entry.getValue().nome() == nome, null, Optional.of(1));
-        var usuario = Optional.ofNullable(usuarios.get(0));
+        var usuario = colecaoDeUsuarios.listarUm((entry) -> entry.getValue().nome().equals(nome));
         if (usuario.isEmpty()) {
             throw new BancoException("Usuário %s não está cadastrado.", nome);
         }
-        return sessaoPara(usuario.get().getId(), usuario.get().getObjeto().tipo());
+        return sessaoPara(usuario.get());
     }
 
     public UUID registrar(String nome, TipoUsuario tipo) throws BancoException {
-        var usuarios = colecaoDeUsuarios.listar(entry -> entry.getValue().nome() == nome, null, Optional.of(1));
-        if (usuarios.size() > 0) {
+        var usuario = colecaoDeUsuarios.listarUm(
+                entry -> entry.getValue().nome().equals(nome)
+        );
+        if (usuario.isPresent()) {
             throw new BancoException("Usuário %s já existe, por favor usar outro nome", nome);
         }
         return colecaoDeUsuarios.inserir(new Usuario(nome, tipo));

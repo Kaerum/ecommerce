@@ -1,6 +1,6 @@
-package interfaces;
+package compartilhado;
 
-import interfaces.usuario.TipoUsuario;
+import compartilhado.usuario.TipoUsuario;
 import java.util.UUID;
 
 public interface Servidor {

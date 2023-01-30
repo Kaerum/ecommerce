@@ -1,4 +1,4 @@
-package servidor.produto;
+package compartilhado.produto;
 
 
 public class Livro extends Produto {

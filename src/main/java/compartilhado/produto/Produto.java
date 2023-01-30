@@ -1,4 +1,4 @@
-package servidor.produto;
+package compartilhado.produto;
 
 import lombok.Getter;
 import lombok.Setter;
