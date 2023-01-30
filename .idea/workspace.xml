@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a5e4be8-54af-428f-9b75-e4f252d2ae1a" name="Changes" comment="ScopeOf: Produto.java" />
+    <list default="true" id="59c04fc9-5692-409c-82b1-77d47ea78b6e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cliente/prod/frame/IdentificadorDePainel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliente/ui/frame/IdentificadorDePainel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cliente/prod/frame/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliente/ui/frame/MainFrame.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +52,7 @@
     &quot;last_opened_file_path&quot;: &quot;/Users/leleo/Documents/AMERICANAS_POLOTECH/Ecommerce/ecommerce&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.cliente.ui.frame.MainFrame">
     <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cliente.prod.frame.MainFrame" />
       <module name="ecommerce" />
@@ -61,8 +66,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="cliente.ui.frame.MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cliente.ui.frame.MainFrame" />
+      <module name="ecommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cliente.ui.frame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.cliente.ui.frame.MainFrame" />
         <item itemvalue="Application.MainFrame" />
       </list>
     </recent_temporary>
@@ -70,7 +89,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0a5e4be8-54af-428f-9b75-e4f252d2ae1a" name="Changes" comment="" />
+      <changelist id="59c04fc9-5692-409c-82b1-77d47ea78b6e" name="Changes" comment="" />
       <created>1674866505022</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -81,5 +100,20 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ScopeOf: Produto.java" />
     <option name="LAST_COMMIT_MESSAGE" value="ScopeOf: Produto.java" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cliente/ui/frame/MainFrame.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

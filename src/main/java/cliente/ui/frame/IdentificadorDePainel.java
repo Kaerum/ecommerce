@@ -1,4 +1,4 @@
-package cliente.prod.frame;
+package cliente.ui.frame;
 
 public enum IdentificadorDePainel {
     LOGIN,

@@ -1,14 +1,19 @@
-package cliente.prod.frame;
+package cliente.ui.frame;
 
-import interfaces.Servidor;
+import interfaces.ContextoAutenticado;
+import interfaces.RespostaServidor;
 import interfaces.usuario.TipoUsuario;
+import servidor.ServidorImpl;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class MainFrame {
+    ServidorImpl servidor = new ServidorImpl();
+
     private final JFrame frame = new JFrame();
     private final JPanel logInPanel = new JPanel();
     private final JPanel signInPanel = new JPanel();
@@ -40,8 +45,7 @@ public class MainFrame {
 
     public MainFrame() {
         init();
-        logInPanel.setVisible(true);
-//        cardLayout.show(signInPanel,IdentificadorDePainel.SIGNIN.toString());
+        cardLayout.show(contentPane,IdentificadorDePainel.LOGIN.toString());
     }
 
     private void init() {
@@ -108,12 +112,45 @@ public class MainFrame {
     }
     private void logInAction() {
         String userInput = logInTextField.getText();
-
+//        RespostaServidor respostaServidor = servidor.logar(userInput);
+        if (false) {
+//        if(respostaServidor.valor().isPresent()) {
+            cardLayout.show(contentPane, IdentificadorDePainel.PRODUTOS.toString());
+        } else {
+            Object[] options = {"Cadastrar","Retornar ao Login"};
+            int optionPaneResponse = JOptionPane.showOptionDialog(frame,
+                    "Usuário não encontrado. Deseja se cadastrar?",
+                    "Usuário não encontrado",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+            switch (optionPaneResponse) {
+                case javax.swing.JOptionPane.YES_OPTION:
+                    cardLayout.show(contentPane, IdentificadorDePainel.SIGNIN.toString());
+                    break;
+                case JOptionPane.NO_OPTION:
+                    break;
+            }
+        }
     }
+    javax.swing.GroupLayout signInPanelLayout = new javax.swing.GroupLayout(signInPanel);
     private void signInPanelSetup() {
+        signInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                signInAction();
+            }
+        });
+        signInTextField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                signInAction();
+            }
+        });
         signInComboBox.addItem(TipoUsuario.Cliente);
         signInComboBox.addItem(TipoUsuario.Administrador);
-        javax.swing.GroupLayout signInPanelLayout = new javax.swing.GroupLayout(signInPanel);
         signInPanel.setLayout(signInPanelLayout);
         signInPanelLayout.setHorizontalGroup(
                 signInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,11 +174,29 @@ public class MainFrame {
                                 .addContainerGap(38, Short.MAX_VALUE))
         );
     }
-    private void singInAction() {
-
+    private void signInAction() {
+        String userInput = signInTextField.getText();
+        if (false) {
+            JOptionPane.showMessageDialog(contentPane, "Cadastro efetuado com sucesso. Confirme para retornar a página de login.");
+            cardLayout.show(contentPane, IdentificadorDePainel.LOGIN.toString());
+        } else {
+            Object[] options = {"Tentar novamente","Abortar"};
+            int optionPaneResponse = JOptionPane.showOptionDialog(frame,
+                    "Falha no cadastro. Deseja tentar novamente?",
+                    "Falha no cadastro",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+            switch (optionPaneResponse) {
+                case JOptionPane.YES_OPTION -> cardLayout.show(contentPane, IdentificadorDePainel.SIGNIN.toString());
+                case JOptionPane.NO_OPTION -> frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            }
+        }
     }
+    javax.swing.GroupLayout productsPanelLayout = new javax.swing.GroupLayout(productsPanel);
     private void productsPanelSetup() {
-        javax.swing.GroupLayout productsPanelLayout = new javax.swing.GroupLayout(productsPanel);
         productsPanel.setLayout(productsPanelLayout);
         productsPanelLayout.setHorizontalGroup(
                 productsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

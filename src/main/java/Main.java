@@ -1,4 +1,4 @@
-import io.qt.widgets.*;
+//import io.qt.widgets.*;
 
 public class Main {
     public static void main(String[] args) {
