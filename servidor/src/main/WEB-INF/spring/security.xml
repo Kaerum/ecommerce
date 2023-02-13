@@ -1,0 +1,4 @@
+<authentication-manager>
+    <authentication-provider
+            ref="customAuthenticationProvider" />
+</authentication-manager>

@@ -1,0 +1,41 @@
+:root {
+    --default-padding: 8px;
+    --default-spacing: 4px;
+    --default-gap: 16px;
+    --color-red: rgb(230, 0, 20);
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+.default-box-shadow {
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.29);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.29);
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.29);
+}
+
