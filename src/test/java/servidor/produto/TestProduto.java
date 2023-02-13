@@ -1,9 +1,10 @@
 package servidor.produto;
-import compartilhado.produto.Informatica;
+import compartilhado.produto.informatica.Informatica;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static compartilhado.produto.Informatica.Categoria.NOTEBOOK;
+import static compartilhado.produto.informatica.CategoriaInformatica.NOTEBOOK;
+
 
 public class TestProduto {
     @Test
