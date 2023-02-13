@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59c04fc9-5692-409c-82b1-77d47ea78b6e" name="Changes" comment="ScopeOf: Produto.java">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cliente/ui/frame/IdentificadorDePainel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cliente/ui/frame/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliente/swing/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compartilhado/produto/Informatica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compartilhado/produto/informatica/Informatica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compartilhado/produto/Livro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compartilhado/produto/livros/Livro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compartilhado/produto/Mercado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compartilhado/produto/mercado/Mercado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/compartilhado/produto/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compartilhado/produto/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/servidor/produto/TestProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/servidor/produto/TestProduto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,13 +23,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Record" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/cliente/swing/MainFrame.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -46,11 +59,32 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/leleo/Documents/AMERICANAS_POLOTECH/Ecommerce/ecommerce",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "last_opened_file_path": "/Users/leleo/Documents/AMERICANAS_POLOTECH/ecommerceNovo/ecommerce",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.toDoOptions"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.cliente.ui.frame.MainFrame">
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="cliente.swing.tools" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.cliente.swing.MainFrame">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cliente.swing.Main" />
+      <module name="ecommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cliente.swing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cliente.prod.frame.MainFrame" />
       <module name="ecommerce" />
@@ -62,6 +96,23 @@
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cliente.swing.MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cliente.swing.MainFrame" />
+      <module name="ecommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cliente.swing.*" />
+          <option name="ENABLED" value="false" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="MakeNoErrorCheck" enabled="true" />
       </method>
     </configuration>
     <configuration name="cliente.ui.frame.MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -77,8 +128,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BasicTableTest.test_BasicTableConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ecommerce" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ui.table.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="cliente.swing.table.BasicTableModel" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ui.table" />
+      <option name="MAIN_CLASS_NAME" value="ui.table.BasicTableTest" />
+      <option name="METHOD_NAME" value="test_BasicTableConstructor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.cliente.swing.MainFrame" />
+      <item itemvalue="Application.cliente.ui.frame.MainFrame" />
+      <item itemvalue="Application.MainFrame" />
+      <item itemvalue="JUnit.BasicTableTest.test_BasicTableConstructor" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.cliente.swing.MainFrame" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.BasicTableTest.test_BasicTableConstructor" />
         <item itemvalue="Application.cliente.ui.frame.MainFrame" />
         <item itemvalue="Application.MainFrame" />
       </list>
@@ -95,6 +176,17 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ScopeOf: Produto.java" />
     <option name="LAST_COMMIT_MESSAGE" value="ScopeOf: Produto.java" />
@@ -106,12 +198,17 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/cliente/ui/frame/MainFrame.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ecommerce$BasicTableTest_test_BasicTableConstructor.ic" NAME="BasicTableTest.test_BasicTableConstructor Coverage Results" MODIFIED="1675909622344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ui.table.*</FILTER>
+      <FILTER>cliente.swing.table.BasicTable</FILTER>
+    </SUITE>
   </component>
 </project>

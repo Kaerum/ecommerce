@@ -1,23 +1,34 @@
-package cliente.ui.frame;
+package cliente.swing;
 
+
+import cliente.swing.panels.components.tables.BasicConnectedTableModel;
+import static cliente.swing.tools.PanelNavigation.IdentificadorDePainel.*;
+
+import cliente.swing.tools.PanelNavigation;
+import compartilhado.produto.Produto;
 import compartilhado.usuario.TipoUsuario;
 import servidor.ServidorImpl;
+import servidor.banco.colecao.OpcoesListagem;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.util.OptionalInt;
 
-public class MainFrame {
-    ServidorImpl servidor = new ServidorImpl();
+public class MainFrame implements PanelNavigation {
+    public final static ServidorImpl servidor = new ServidorImpl();
     private final JFrame frame = new JFrame();
     private final JPanel logInPanel = new JPanel();
     private final JPanel signInPanel = new JPanel();
+    private final JTable table = new JTable(new BasicConnectedTableModel<String>());
     private final JPanel productsPanel = new JPanel();
     private final CardLayout cardLayout = new CardLayout();
     private final Container contentPane = frame.getContentPane();
+    private final ScrollPane scrollPane = new ScrollPane();
     private final JButton logInButton = new JButton("Logar");
+    private final JTextField logInTextField = new JTextField("Nome de Usuário");
     private final JButton signInButton = new JButton("Cadastrar");
     private final JButton editProductButton1 = new JButton("Editar");
     private final JButton removeProductButton1 = new JButton("Remover");
@@ -29,20 +40,18 @@ public class MainFrame {
     private final JButton removeProductButton4 = new JButton("Remover");
     private final JButton editProductButton5 = new JButton("Editar");
     private final JButton removeProductButton5 = new JButton("Remover");
-    private final JTextField logInTextField = new JTextField("Nome de Usuário");
     private final JTextField signInTextField = new JTextField("Nome de Usuário");
     private final JLabel filterByLabel = new JLabel("Filtrar por");
-    private final JLabel ordedByLabel = new JLabel("Ordenar por");
+    private final JLabel orderedByLabel = new JLabel("Ordenar por");
     private final JLabel numberOfEntriesLabel = new JLabel("Número de Produtos por Página");
     private final JComboBox<TipoUsuario> signInComboBox = new JComboBox<>();
     private final JComboBox filterByComboBox = new JComboBox();
     private final JComboBox orderByComboBox = new JComboBox();
     private final JSpinner numberOfEntriesSpinner = new JSpinner();
-    private final JScrollPane scrollPane = new JScrollPane();
 
     public MainFrame() {
         init();
-        cardLayout.show(contentPane,IdentificadorDePainel.LOGIN.toString());
+        goToPanel(LOGIN);
     }
 
     private void init() {
@@ -56,7 +65,7 @@ public class MainFrame {
         return frame;
     }
     public void goToPanel(IdentificadorDePainel identificador) {
-        cardLayout.show(frame,identificador.toString());
+        cardLayout.show(contentPane,identificador.toString());
     }
     private void frameSetup() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +73,6 @@ public class MainFrame {
         frame.setLocationRelativeTo(null);
         frame.setResizable(true);
         frame.setVisible(true);
-
     }
     private void contentPaneSetup() {
         contentPane.setLayout(cardLayout);
@@ -87,6 +95,7 @@ public class MainFrame {
                 logInAction();
             }
         });
+        logInTextField.setToolTipText("O nome de usuário deve não pode ser deixado em branco. Qualquer caractere pode ser empregado.");
         logInPanel.setLayout(logInPanelLayout);
         logInPanelLayout.setHorizontalGroup(
                 logInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,11 +116,15 @@ public class MainFrame {
                                 .addContainerGap(25, Short.MAX_VALUE))
         );
     }
-    private void logInAction() {
+
+    private Object logInAction() {
         String userInput = logInTextField.getText();
         var respostaServidor = servidor.logar(userInput);
-//        if (false) {
         if(respostaServidor.valor().isPresent()) {
+            var teste = respostaServidor.valor().get();
+            var teste2 = teste.colecao(Produto.class).valor().get();
+            var teste3 = teste2.listar(null, null, OpcoesListagem.builder().limite(OptionalInt.of(15)).pular(OptionalInt.of(15/*index de inicio da pagina*/).build());
+//            var teste4 = teste2.listarUm((produto) -> produto.getValue().get() > 10);
             cardLayout.show(contentPane, IdentificadorDePainel.PRODUTOS.toString());
         } else {
             Object[] options = {"Cadastrar","Retornar ao Login"};
@@ -131,7 +144,9 @@ public class MainFrame {
                     break;
             }
         }
+        return null;
     }
+
     javax.swing.GroupLayout signInPanelLayout = new javax.swing.GroupLayout(signInPanel);
     private void signInPanelSetup() {
         signInButton.addActionListener(new ActionListener() {
@@ -146,6 +161,14 @@ public class MainFrame {
                 signInAction();
             }
         });
+
+        signInComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
         signInComboBox.addItem(TipoUsuario.Cliente);
         signInComboBox.addItem(TipoUsuario.Administrador);
         signInPanel.setLayout(signInPanelLayout);
@@ -173,7 +196,9 @@ public class MainFrame {
     }
     private void signInAction() {
         String userInput = signInTextField.getText();
-        if (false) {
+        var userInput2 = signInComboBox.getSelectedIndex();
+        var resposta = servidor.registrar(userInput,signInComboBox.getItemAt(userInput2));
+        if (resposta.valor().isPresent()) {
             JOptionPane.showMessageDialog(contentPane, "Cadastro efetuado com sucesso. Confirme para retornar a página de login.");
             cardLayout.show(contentPane, IdentificadorDePainel.LOGIN.toString());
         } else {
@@ -229,7 +254,7 @@ public class MainFrame {
                                                 .addGap(15, 15, 15)
                                                 .addGroup(productsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(productsPanelLayout.createSequentialGroup()
-                                                                .addComponent(ordedByLabel)
+                                                                .addComponent(orderedByLabel)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(orderByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productsPanelLayout.createSequentialGroup()
@@ -257,7 +282,7 @@ public class MainFrame {
                                                 .addGap(23, 23, 23)
                                                 .addGroup(productsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(orderByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(ordedByLabel))))
+                                                        .addComponent(orderedByLabel))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(productsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(productsPanelLayout.createSequentialGroup()
@@ -281,9 +306,11 @@ public class MainFrame {
                                                         .addComponent(editProductButton5)
                                                         .addComponent(removeProductButton5)))
                                         .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                               .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        )
         );
     }
+
     public static void main(String[] args) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
