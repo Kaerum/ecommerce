@@ -26,7 +26,7 @@ public class ProdutoController {
         return repository.findAll();
     }
 
-    @GetMapping(value = "/buscar", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/buscar", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public Page<Produto> buscar(@RequestBody Busca busca) {
         BuscaSpecification<Produto> specification = new BuscaSpecification<>(busca);
         Pageable pageable = BuscaSpecification.getPageable(busca.getPagina(), busca.getTamanho());

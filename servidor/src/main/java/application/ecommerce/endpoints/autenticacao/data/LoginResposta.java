@@ -13,4 +13,5 @@ import java.util.Collection;
 public class LoginResposta {
     private String nome;
     private Collection<? extends GrantedAuthority> autorizacoes;
+    private String token;
 }

@@ -8,13 +8,14 @@ import java.io.Serializable;
 public
 class RegistroCorpo implements Serializable {
 
-    public enum TipoUsuario {
-        USUARIO,
+    public enum AutoridadeUsuario {
+        USER,
         ADMIN
     }
     public static final long serialVersionUID = -4617536529477623618L;
 
     private String nome;
     private String senha;
-    private TipoUsuario tipoUsuario;
+    private AutoridadeUsuario autoridadeUsuario;
+    private boolean isCnpj;
 }

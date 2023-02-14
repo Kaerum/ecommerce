@@ -1,21 +1,30 @@
 <script lang="ts">
-	import type { Product } from "./product";
+	import { createEventDispatcher } from "svelte";
+	import { AUTHORITIES } from "../../services/authentication/authenticated-user-model";
+	import { cartService } from "../../services/cart/cart-service";
+	import type { IdentifiedEntity } from "../../services/models/entity";
+	import type { Product } from "../../services/models/product/product-model";
+	import { permissionService } from "../../services/permissions/permission-service";
+    const permissionsObservable = permissionService.permissionsChanges
 
+    const dispatch = createEventDispatcher<{ delete: number }>()
 
-    export let product: Product
+    export let product: IdentifiedEntity<Product>
 </script>
 
 <div class="container default-box-shadow">
-    <div class="admin">
-        <button>Editar</button>
-        <button>X</button>
-    </div>
+    {#if $permissionsObservable.hasAuthority(AUTHORITIES.ADMIN)}
+        <div class="admin">
+            <button>Editar</button>
+            <button on:click={() => dispatch('delete', product.id)}>X</button>
+        </div>
+    {/if}
     <img class="image" alt={product.descricao}>
     <div class="description">
         <span class="name">{product.nome}</span>
         <span class="price">R$ {product.preco}</span>
     </div>
-    <div><button>Comprar</button></div>
+    <div><button on:click={() => cartService.addItem(product.id, 1)}>Adicionar ao carrinho</button></div>
 </div>
 
 <style lang="scss">

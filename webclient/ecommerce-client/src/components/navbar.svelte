@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Authentication from "./authentication/authentication.svelte";
+
 
 </script>
 
@@ -10,8 +12,7 @@
         <input type='search'>
     </div>
     <div class="right-container">
-        <button>Login</button>
-        <button>Cadastro</button>
+        <Authentication></Authentication>
     </div>
 </div>
 
@@ -46,9 +47,6 @@
             align-items: center;
             justify-content: center;
             flex: 0 0 25%;
-            button {
-                margin: var(--default-spacing)
-            }
         }
     }
 </style>

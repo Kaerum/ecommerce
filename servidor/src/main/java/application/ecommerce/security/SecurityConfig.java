@@ -51,6 +51,7 @@ public class SecurityConfig {
                     .and()
                 .authorizeHttpRequests()
                     .requestMatchers(HttpMethod.GET, "/produtos/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/produtos/buscar").permitAll()
                     .requestMatchers(HttpMethod.POST, "/autenticacao/registrar").permitAll()
                     .requestMatchers(HttpMethod.POST, "/autenticacao/logar").permitAll()
                     .anyRequest().authenticated().and()
@@ -62,12 +63,10 @@ public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         var builder = http.getSharedObject(AuthenticationManagerBuilder.class);
-        builder.userDetailsService(username -> {
-            return usuarioService.getByName(username)
+        builder.userDetailsService(username -> usuarioService.getByName(username)
                     .orElseThrow(() -> new UsernameNotFoundException(
                             String.format("Usuário: %s não encontrado", username)
-                    ));
-                }
+                    ))
         );
         return builder.build();
     }
@@ -82,7 +81,7 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
+        config.addAllowedOrigin("http://localhost:3000");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
