@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adicionar Produto</title>
+</head>
+<body>
+  <div th:switch="${editMode}">
+    <form th:case="false" action="#" th:action="@{/criar-produto}" th:object="${product}" th:method = "POST">
+      <input th:field=*{nome} placeholder="Nome" type="text"/>
+      <input th:field=*{descricao} placeholder="Descrição" type="text"/>
+      <input th:field=*{categoria} placeholder="Categoria" type="text"/>
+      <input th:field=*{marca} placeholder="Marca" type="text"/>
+      <input th:field=*{preco} placeholder="Preço" type="number"/>
+      <input th:field=*{peso} placeholder="Peso" type="number"/>
+      <input type="submit" value="Adicionar Produto">
+    </form>
+    <form th:case="true" action="#" th:action="@{/editar-produto}" th:object="${product}" th:method = "POST">
+      <input th:field="*{id}" type="hidden">
+      <input th:field=*{nome} placeholder="Nome" type="text"/>
+      <input th:field=*{descricao} placeholder="Descrição" type="text"/>
+      <input th:field=*{categoria} placeholder="Categoria" type="text"/>
+      <input th:field=*{marca} placeholder="Marca" type="text"/>
+      <input th:field=*{preco} placeholder="Preço" type="number"/>
+      <input th:field=*{peso} placeholder="Peso" type="number"/>
+      <input type="submit" value="Salvar Produto">
+    </form>
+  </div>
+</body>

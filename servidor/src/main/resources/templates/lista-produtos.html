@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="./lista-produtos.css">
+</head>
+<body>
+  <div class="product-list">
+    <div class="product-list-header">
+      <span>Total de produtos: <label th:text="${products.size()}">0</label></span>
+      <a href="./criar-produto">Adicionar novo produto</a>
+    </div>
+    <div class="product-list-body">
+        <table>
+            <thead>
+                <td>Nome</td>
+                <td>Descrição</td>
+                <td>Categoria</td>
+                <td>Marca</td>
+                <td>Preço</td>
+                <td>Peso</td>
+                <td>Ações</td>
+            </thead>
+            <tbody>
+                <tr th:each="product: ${products}">
+                    <td th:text="${product.nome}"></td>
+                    <td th:text="${product.descricao}"></td>
+                    <td th:text="${product.categoria}"></td>
+                    <td th:text="${product.marca}"></td>
+                    <td th:text="${product.preco}"></td>
+                    <td th:text="${product.peso}"></td>
+                    <td>
+                        <a th:href="@{/edit/{id}(id=${product.id})}">Editar</a>
+                        <a th:href="@{/excluir/{id}(id=${product.id})}">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+</body>
+</html>

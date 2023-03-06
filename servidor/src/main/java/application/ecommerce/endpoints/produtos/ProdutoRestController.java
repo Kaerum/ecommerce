@@ -16,13 +16,13 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController()
 @RequestMapping(value = "produtos")
-public class ProdutoController {
+public class ProdutoRestController {
 
     @Autowired
     private ProdutoRepository repository;
 
     @GetMapping()
-    List<Produto> todos() {
+    public List<Produto> todos() {
         return repository.findAll();
     }
 
@@ -35,12 +35,12 @@ public class ProdutoController {
 
     @PostMapping()
     @RolesAllowed(Roles.ADMIN)
-    Produto novo(@RequestBody Produto valor) {
+    public Produto novo(@RequestBody Produto valor) {
         return repository.save(valor);
     }
 
     @GetMapping("/{id}")
-    Produto um(@PathVariable Long id) throws NotFoundException {
+    public Produto um(@PathVariable Long id) throws NotFoundException {
 
         return repository.findById(id)
                 .orElseThrow(() -> new NotFoundException(id));
@@ -48,14 +48,14 @@ public class ProdutoController {
 
     @PutMapping("/{id}")
     @RolesAllowed(Roles.ADMIN)
-    Produto replace(@RequestBody Produto valor, @PathVariable Long id) {
+    public Produto replace(@RequestBody Produto valor, @PathVariable Long id) {
         valor.setId(id);
         return repository.save(valor);
     }
 
     @DeleteMapping("/{id}")
     @RolesAllowed(Roles.ADMIN)
-    void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         repository.deleteById(id);
     }
 }

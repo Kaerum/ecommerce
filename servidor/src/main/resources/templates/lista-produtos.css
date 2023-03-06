@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 0.0625px;
+}
+
+body {
+    font-size: 16rem;
+}
+
+.product-list {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.product-list-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-list-body {
+    width: 100%
+}
